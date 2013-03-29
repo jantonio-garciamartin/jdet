@@ -1,0 +1,152 @@
+<html>
+	<HEAD>
+		<LINK rel="icon" href="favicon.ico" />
+		<LINK href="css/styles.css" rel="stylesheet" type="text/css">
+		<TITLE> Jdet - User manual & Help file</TITLE>
+	</HEAD>
+	<BODY>
+		<center>
+			<h2><i>Jdet</i> <br> User manual & Help file</h2>
+		</center>
+		<hr>
+		<i>Jdet</i> (<a href="http://csbg.cnb.csic.es/Jdet">http://csbg.cnb.csic.es/Jdet</a>) is a multiplatform software for the interactive calculation and 
+		visualization of function-related conservation patterns in multiple 
+		sequence alignments and structures. It contains the set of tools and features we consider critical for the daily work with this kind of data, and that previously were disseminated in different packages and web servers. For a general description of the package and the biological problem which prompted its development, as well as more information on multiple sequence alignments (MSAs), conserved positions, specificity determining positions (SDPs), etc., please take a look at the following article and the references cited there: <a href="http://XXXpubmedXXX">Muth <i>et al.</i> (2011). <i>Journal</i>. <b>XXXX:xxxx-yyyy</b> </a>
+		<hr>
+		<h3> Contents </h3>
+		<ul>
+		<li> <a href="#install">Installing and running <i>Jdet</i></a>
+		<li> <a href="#aln">Loading and filtering multiple sequence alignments </a>
+		<li> <a href="#visu">Coloring the alignment and highlighting selections</a>
+		<li> <a href="#str">Working with protein three-dimensional structures</a>
+		<li> <a href="#methods">Showing the results of different programs/methods</a>
+			<ul>
+			<li> <a href="#run">Running the included programs (<i>Xdet</i> and <i>S3det</i>)</a>
+			<li> <a href="#spaces"><i>S3Det</i>, subfamilies and "sequence spaces"</a>
+			</ul>
+		<li> <a href="#logos">Sequence logos</a>
+		<li> <a href="#contact">Support and contact</a>
+		</ul>
+		<hr>
+
+		<a name="install"/>
+		<h3> Installing and running <i>Jdet</i> </h3>
+		<p>XXXXX. The program requires Java 1.5 or higher to be installed in your system. Once the program is installed, run it by double-clicking the <tt>jdet-1.3.jar</tt> file or with the following command line: <tt>java -jar jdet-1.3.jar</tt></p>
+
+		<a name="aln">
+		<h3> Loading and filtering multiple sequence alignments </h3>
+		<p>The basic input for the program is a multiple sequence alignment (MSA) of proteins. <br/>Use "File -> Load alignment" or the corresponding button in the button bar (<img src="img/align.png"/>) to load it. The program accepts <i>PIR</i> and <i>multiple-fasta</i> formats. Proteins are arranged in rows and the columns represent equivalent positions between these proteins.</p> 
+		<p>The results of the programs for detecting conserved positions and SDPs totally depend on the quality of the MSA used as input. The program allows to do some basic filtering of the loaded MSA, although the user is encouraged to carefully inspect/change his/her alignment depending on the source it comes from. Use "File -> Filter alignment" or the corresponding button of the bar (<img src="img/filteralign.png"/>) and select the filtering parameters in the dialog box. </p>
+		<p>
+		These parameters are: 
+		<ol type="i"">
+			<li>The lower percentage of sequence identity (%ID) allowed with the master sequence (the first sequence of the alignment). Proteins with a %ID lower than the selected threshold will be removed. This allows to discard distant/divergent sequences.</li>
+			<li>The higher %ID allowed between any pair of proteins. If two proteins have a %ID higher than this threshold, the second one is removed. This allows to remove redundancy in the alignment.</li> 
+			<li>Minimum coverage respect to the master sequence. Proteins aligning less than this percentage of residues of the master sequence are removed. This is intended to remove fragments from the MSA.</li>
+			<li>Positions (columns) in the alignment for which the master sequence does not have an equivalent residue (i.e. there is a gap there) can be removed with this option. </li>
+		</ol>
+		<p>The user can change these parameters freely or select sets of parameters found useful for different programs/situations. <i>Jdet</i> contains two sets of parameters for the two programs included in the installation (<i>Xdet</i> and <i>S3Det</i>) but the user can add more sets by editing the <tt>conf/filterPresets.dat</tt> file. </p>
+		<p>The filtered alignment can be saved with "File -> Save alignment" or the corresponding button (<img src="img/savealign.png"/>). </p>
+		<a name="visu">
+		<h3> Coloring the alignment and highlighting selections </h3>
+		<p>
+		Aminoacids in the MSA can be colored according with different schemas using the "Color" menu. Apart from the four schemas included, the user can import any other schema with the "Color -> User defined" option. The input for this option is a file associating a numerical value (e.g a physico-chemical property) to each of the 20 aminoacid. Examples of such files can be found in the <tt>examples/colors</tt> directory of the installation. The aminoacids are colored by associating a color scale to the range of numerical values. Two different color scales can be selected in the "Color" menu: RGB (from red -low values- to green -medium values- to blue -high values-) or RB (from red -low values- to blue -high values-). The selected scale is shown in the bottom-left corner of the window, indicating the minimum and maximum value.
+		</p>
+		<p>
+		Proteins, positions, or particular aminoacids within the positions can be selected in order to perform different operations with them (explained below). To select a set of proteins simply click their IDs. To select entire positions (columns) of the MSA click in the corresponding column numbers (blue panel). To select a particular aminoacid within a column simply click on any instance of it in the column. Selections are always cumulative. To remove from the selection an already selected protein, column or aminoacid, simply click it again. To completely clear the current selection of proteins or positions/aminoacids use the corresponding options in the "Selection" menu or the equivalent buttons of the bar (<img src="img/unselectresidues.png"/>). Note that, since selections are cumulative, "unselecting" is a very common operation in <i>Jdet</i>. For this reason, it is recommended to perform it with the button in the tool-bar, instead of the menu.
+		</p>
+		<p>
+		The "subalignment" defined by the current selection of proteins and positions can be shown in a separated window or exported to a FASTA file with the corresponding options of the "Selection" menu or the buttons in the bar (<img src="img/fasta.png"/>).
+		</p>
+		<p>
+		The current representation shown in the alignment window (with the current color schema, the currently highlighted selected protein and positions, etc) can be exported to a PNG image file with "File -> export PNG file" or the corresponding button.
+		</p>
+
+		<a name="str">
+		<h3> Working with protein three-dimensional structures </h3>
+		<p>
+		If the structure of any protein in the MSA (or a close homolog) is known, it can be shown and manipulated in the included <i>Jmol</i> viewer (<a href="http://www.jmol.org">http://www.jmol.org</a>). This can be done with "File -> Load structure" or the corresponding button in the bar (<img src="img/structure.png"/>). A dialog appear where the user has to provide a local PDB file with the 3D structure or its 4-character PDB ID (<a href="http://www.rcsb.org">http://www.rcsb.org</a>). In the last case, the structure is directly retrieved from the RCSB/PDB site and hence this requires an active Internet connection. Since PDB files might contain multiple protein chains, the user has to indicate which chain he/she is referring to. Finally, the user has to select in the dialog which sequence in the MSA corresponds to the structure. A perfect match between the sequence in the PDB file and that in the MSA is not required. The program aligns both sequences with a simple heuristic method to find the best correspondence between their positions. This allows to incorporate structures of close homologs, as well as those of fragments or longer versions of the sequence of interest. A window pops-up with the alignment found by the program between the sequence in the PDB file and that in the alignment, indicating the matching residues as well as the percentages of identity, in order for the user to check it before going on. Note that the alignment method used is not exhaustive (e.g. Smith-Waterman or similar) and hence it is intended only for cases of very high similarity (Actually, the only ones for which it would make sense to load an structure in this context).
+		</p>
+		<p>
+		In the <i>Jmol</i> window, the selected chain is shown in ribbon representation, the heteroatoms (prostetic groups, ligands, etc) in spacefill and colored yellow, and the other chains of the PDB file with thin backbone. This window contains also a text-box to execute Jmol/Rasmol commands. Take a look at the 
+		Jmol documentation (<a href="http://jmol.sourceforge.net/docs/">http://jmol.sourceforge.net/docs/</a>) for information on how to manipulate the structure as well as on Jmol/Rasmol commands. 
+		</p>
+		<p>
+		Residues in the 3D structure can be selected by clicking on them. These are highlighted in green in the structure and the corresponding positions are also selected in the MSA window. And in the other way around: selections (and de-selections) in the MSA (see above) are translated to the 3D structure. The Jmol/Rasmol commands (see above) affect the current selection only. For example, if a set of positions is selected in the MSA window (and consequently highlighted in green in the 3D structure) and the following command is typed in the <i>Jmol</i> window: <tt>spacefill; color red</tt> the result is the set of selected residues to become red and "spacefilled". For the commands to affect not only the current selection but the whole chain or PDB file these have to be previously selected in <i>Jmol</i>; for example: <tt>select all; spacefill; color red</tt> or <tt>select *A; spacefill; color red</tt> respectively.
+		</p>
+
+		<a name="methods"/>
+		<h3>
+		Showing the results of different programs/methods
+		</h3>
+		<p>
+		<i>Jdet</i> was designed as a platform for integrating and visualizing the results of different programs/methods for detecting conservation patterns in MSA's related to functionality (basically conservation and SDP's -see reference above-). The basic result of one of these programs is a set of positions of the MSA (predicted to have some functional importance) and eventually numerical scores associated to them. These results can be imported with the "File -> Load method result -> XXX" menu items or the corresponding buttons (<img src="img/xdet.png" height="16"/>&nbsp;<img src="img/s3det.png"/>&nbsp;<img src="img/userdef.png"/>). Right now the program can read the results of two recently developed methods: <i>Xdet</i> (<a href="http://pdg.cnb.csic.es/pazos/Xdet/">http://pdg.cnb.csic.es/pazos/Xdet/</a>) and <i>S3Det</i> (XXX) and a generic format ("user defined") which opens the possibility of importing the results of any other program by converting it to this simple format. A simple description of this format appears in the dialog box when using this option, and an example can be found in the <tt>examples/userdef.txt</tt> file. <i>Jdet</i> can read the results of the "supervised" and "unsupervised" versions of <i>Xdet</i> and <i>S3Det</i> since the file format is the same. See the references given above for these programs for more information on supervised/unsupervised.
+		</p>
+		<p>
+		The results of up to four methods can be loaded simultaneously. These are piled up above the alignment. For each method loaded, it is shown the name of the method (for "user defined" the names of the files), a text box and a slider bar to control the method's threshold (see below), two buttons (<img src="img/or.png"/>&nbsp;<img src="img/add.png"/>)to perform selections according with the method's results (see below), and green circles highlighting the positions reported by that method with scores above the selected threshold. The results of <i>Xdet</i> appear as two different methods: <tt>Xdet</tt> and <tt>Entropy</tt> (a measure of conservation) since the results file of this program contains both types of data. Moving the slider bar changes the set of positions shown for that method (green circles) in real time. This allows to explore more permissive or restrictive cutoffs of the method.
+		</p>
+		<p>
+		Note that with "user defined" we can not only import the result of any other program, but also any arbitrary set of positions we are interested in. This allows a number of useful tricks, e.g. to load a set of experimentally determined functional positions and evaluate its agreement (or closeness in a 3D structure) with a set of predictions, etc. 
+		</p> 
+		<p>
+		The positions currently shown for a given method (i.e. above the selected threshold) can be selected in a single shot by clicking the <img src="img/or.png"/> button for that method, or with the "Selection -> selection from method -> XXX" menu path. For selecting the positions reported concomitantly by more than one method (i.e. to search for consensus/stable results) click on the <img src="img/or.png"/> button for one of the methods, and the <img src="img/add.png"/> button for the others. So the <img src="img/add.png"/> button works as a sort of "AND" selection criteria. These "method-based" selections behave the same as any other selection (i.e. they are highlighted in the 3D structure if available, etc.) Note that many of the operations with selections explained in the previous sections acquire more sense for these method-based selections (e.g. to inspect in a separate window the sequence characteristics of positions predicted by a method, their characteristics in the 3D structure, etc.)
+		</p>
+
+		<a name="run">
+		<h4>
+		Running the included programs (<i>Xdet</i> and <i>S3det</i>)
+		</h4>
+		<p>
+		Apart from loading files with results previously generated by <i>Xdet</i> and <i>S3Det</i>, the package includes versions of these programs for different operative systems and hence they can be run from within <i>Jdet</i> for the alignment currently loaded, and the results automatically imported. This can be done with the "File -> Run method -> XXX" menu items or with the corresponding buttons in the tool-bar (<img src="img/run_xdet.png"/>&nbsp;<img src="img/run_s3det.png"/>). In the dialog box which pops up, the user can modify the parameters of the command line that will be used for running the programs (i.e. adding or removing options). Take a look at the documentation of these programs (<a href="http://pdg.cnb.uam.es/pazos/mtreedet/Xdet_README.txt" target="_blank">Xdet</a> and XXXX -links-) for information on the parameters of the command line, etc. Changing these parameters allows, for example, to run these programs in "unsupervised" or "supervised" mode. See the documentation of the programs and their references (above) for more information on supervised/unsupervised. The default command lines suggested in the dialog are for "unsupervised" runs with typical parameters.
+		</p>
+		<p>
+		These results generated "on-the-fly" by running the programs from within <i>Jet</i> can be saved to files for future uses and for avoiding running the programs again for the same alignment. This can be done with the "File -> Save method results -> XXX" menu items or the corresponding buttons (<img src="img/save_xdet.png"/>&nbsp;<img src="img/save_s3det.png"/>).
+		</p>
+
+		<a name="spaces">
+		<h4>
+		<i>S3Det</i>, subfamilies and "sequence spaces"
+		</h4>
+		<p>
+		The results of <i>S3Det</i> contain information not only on the positions predicted to be SDPs but also on the subfamily composition of the MSA as well. This subfamily partition is automatically calculated by <i>S3Det</i> when run in "unsupervised" mode, or is that used as input when the "supervised" mode is used. Additionally, <i>S3Det</i> uses a sophisticated and elegant vectorial representation of proteins and residues in order to detect subfamilies and their associated SDPs (see the <a href="XXXXXpubmed">reference</a> above). These vectorial representations contain a lot of information of which the final set of predicted SDPs is just a summary. Manually inspecting these vectorial spaces can provide additional important information (e.g. other possible subfamily partitions or SDPs nor reported automatically due to the threshold used). For these reasons, <i>Jdet</i> incorporates specific tools for working with the subfamilies and sequence spaces reported by <i>S3Det</i>.
+		</p>
+		<p>
+		When a file with <i>S3Det</i> results is loaded, or <i>S3Det</i> is run, the proteins in the MSA are automatically grouped and colored according with the subfamily classification. 
+		</p>
+		<p>
+		A window with the "sequence spaces" can be opened with "File -> show sequence spaces" or the corresponding button (<img src="img/cluster.png"/>). <i>S3Det</i> represents each protein and each residue in a given alignment position as a vector in a high dimensional space. 3D projections of that space are shown in this window, separating the vectors of the proteins (left) and those of the residues (right). The user can rotate these spaces with the mouse. The rotation is coordinated since relating the "spatial positions" of proteins and residues is indeed the basis of the methodology for detecting SDPs associated to subfamilies. The user can choose which particular set of three axis of the multidimensional space to shown in the projections. Axis are sorted by their information content, and hence usually the first three axis (1st, 2nd and 3rd) are those in which the subfamily partition of the MSA is more evident. Nevertheless, other axis can contain information on deeper levels of subfamily divisions. In this representation, proteins (dots) are colored according with their subfamily assignment, as in the MSA. In the residue space, the centers of the family clusters are colored in the same way, and the black dots represent the centers of "multifamily" clusters (e.g. the cluster formed by subfamilies A+B, A+C, etc.) 
+		</p>
+		<p>
+		Residues and proteins can be selected in these spaces by "dragging" a box around them by moving the mouse (with the left button pressed) while pressing "SHIFT" at the same time. Selected proteins become colored black, and selected residues red. Selections in these spaces are automatically translated to the MSA and the 3D structure (if available). And the other way around, selections in the MSA or the 3D structure (see above) are highlighted in these spaces. So, the three main windows of the program (MSA, 3D structure and sequence spaces) are fully connected in all directions, in the sense that selections in any of them are automatically translated into the others. This opens many possibilities such as inspecting the position in the structure of a set of residues close to a given subfamily in the sequence space, their sequence patterns, etc.
+		</p>
+
+
+		<a name="logos">
+		<h3>
+		Sequence logos
+		</h3>
+		<p>
+		Sequence logos (<a href="http://en.wikipedia.org/wiki/Sequence_logo">http://en.wikipedia.org/wiki/Sequence_logo</a>) are specially useful for inspecting conservation patterns, either fully conservation or family-dependent conservation related to functional specificity (SDPs). <i>Jdet</i> can create sequence logos in two ways: global sequence logos, or subfamily-based. In the second case, the logos are calculated for each subfamily independently, what is very useful for inspecting the differential conservation patters associated to the subfamilies. In both cases, if there is an active selection of positions and/or proteins, the logos are calculated for the "subaligment" defined by the selection. The capability of generating global and subfamily-dependent logos, combined with the generation of logos for subsets of positions (selection), opens a large number of interesting possibilities: e.g. generating the logo for the subset of positions predicted by a given method (SDPs) in a subfamily-dependent way in order to assess the differential conservation patterns associated to these SDPs, etc.
+		</p>
+		<p>	
+		To create both types of sequence logos use the corresponding options in the "Selection" menu or the buttons in the bar (<img src="img/logos.png"/>&nbsp;<img src="img/clusterLogos.png"/>).
+		</p>
+
+		<hr>
+
+		<a name="contact">
+		<h3>
+		Support and contact
+		</h3>
+		<p>
+		For updated information on <i>Jdet</i>, links to the last versions of binaries and source code, etc., bookmark the following URL: <b><a href="http://csbg.cnb.csic.es/Jdet">http://csbg.cnb.csic.es/Jdet</a></b>
+		</p>
+		<p>
+		For any comment or question about this software please contact Florencio Pazos (<a href="mailto:pazos@cnb.csic.es" style="border:none"><img src="img/email.png" border="0"/></a>). Note that <i>Jdet</i> is a free academic software without any warranty.
+		</p>
+		<p> Please cite the following reference when reporting any result or image generated with this software:
+		<li> <a href="http://XXXpubmedXXX">Muth <i>et al.</i> (2011). <i>Journal</i>. <b>XXXX:xxxx-yyyy</b> </a>
+
+		<hr>
+	</BODY>
+</html>

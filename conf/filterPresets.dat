@@ -1,0 +1,5 @@
+# Default filter parameters
+# 
+# name	dd ddd dd  ddd 
+Xdet	25	95	60	0
+S3det	24	90	65	1
