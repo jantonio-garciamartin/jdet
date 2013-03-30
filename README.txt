@@ -40,13 +40,8 @@
 
    =====> Compiling JDet <=====
 
-   1. Compile using ant from base directory
-   2. Copy the following directories to dist/ folder
-         conf
-         JDet.app
-         plugins
-         programs
-         tmp
-   3. Folder dist now contain a full version of JDet ready for distribution
+   Compile using ant from base directory, folder dist now contain a full version of JDet ready for distribution
 
+   =====> Eclipse project <=====
 
+   Project files for eclipse are included, just import base drectory as java project
