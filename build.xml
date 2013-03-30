@@ -54,12 +54,12 @@
         </java>
 	</target>
 	 <target name="jar" depends="compile">
-	        <jar destfile="./target/${application.name}-${application.version}.jar" filesetmanifest="mergewithoutmain">
+	        <jar destfile="${target.dir}/${application.name}-${application.version}.jar" filesetmanifest="mergewithoutmain">
 	            <manifest>
 	                <attribute name="Main-Class" value="view.AlignFrame"/>
 	                <attribute name="Class-Path" value="."/>
 	            </manifest>
-	            <fileset dir="./target/classes"/>
+	            <fileset dir="${target.classes}"/>
 	            <fileset dir=".">
 					<include name="img/*.png"/>
 	            </fileset>
@@ -81,9 +81,11 @@
 	            <zipfileset excludes="META-INF/*.SF" src="./lib/commons-discovery-0.4.jar"/> 
 	            <zipfileset excludes="META-INF/*.SF" src="./lib/wsdl4j-1.6.2.jar"/> 
 	        </jar>
+		<delete dir="${target.classes}" />
 	    </target>
 	<target name="clean" description="Deletes all generated class files!">
-		<delete dir="${target.dir}" />
+		<delete dir="${target.classes}" />
+		<delete dir="${target.dir}/${application.name}-${application.version}.jar" />
 	</target>
 
 </project>
