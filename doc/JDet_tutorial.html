@@ -2,8 +2,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title> JDet - Tutorial - Computational Systems Biology Group </title>
+		<META NAME="Description" CONTENT="JDet: Interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures.">
+		<META NAME="Keywords" CONTENT="JDet, Multiple alignment, sequence space, Conserved residues, function related, conservation, Xdet, S3det, CSBG, CNB">
 		<LINK rel="icon" href="favicon.ico" />
 		<LINK href="css/styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-25985083-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
 	</head>
 	<body>
 		<center><h2><i>JDet</i><br>Tutorial</h2></center>
@@ -14,11 +29,12 @@
 		<a href="http://csbg.cnb.csic.es/JDet/JDet_help.html">user manual</a>.
 		</p>
 		<p>
-		In this tutorial, we are going to work with a multiple sequence alignment (MSA) of "class-III aminotransferases", a group of homologous enzymes with different transferase activities (i.e. acting on different substrates). We will see how <i>JDet</i> can be used to study the functional specificity in this family and detect the residues responsible for that specificity.
+		In this tutorial, we are going to work with a multiple sequence alignment (MSA) of "class-III aminotransferases", a group of homologous enzymes with different transferase activities (i.e. acting on different substrates). We will see how <i>JDet</i> can be used to study the functional specificity in this family and detect the residues responsible for these different catalitic activities.
 		</p>
 		<hr>
 		<p>
-		We start by opening <i>JDet</i> and loading the alignment of these proteins which comes with the distribution. We do that with "File-&gt;Load alignment" (or the corresponding button in the toolbar: <img src="img/align.png"/>) and browse to the <tt>examples/PF00202.mfa</tt> file. 
+		We start by opening <i>JDet</i> and loading the alignment of these proteins which comes with the distribution. 
+Simply drag the icon of the file <tt>examples/PF00202.mfa</tt> into JDet's main window. Alternatively, you can also go to "File-&gt;Load alignment", or use the corresponding button in the toolbar: <img src="img/align.png"/>). 
 		</p>
 		<p>
 		This alignment (<a href="./img/1_aln.png" target="new">Figure 1</a>) contains 27 sequences of class-III aminotrasferases with different substrate specificities. In this case, the specificities can be inferred from the IDs of the proteins: 
@@ -35,7 +51,10 @@
 		</a>
 
 		<p>
-		Then, we run the two included programs for locating subfamilies and SDP with "File -&gt; Run method -&gt;", or with the corresponding buttons (<img src="img/run_xdet.png"/>&nbsp;<img src="img/run_s3det.png"/>). In this case we do not change the command line options for these programs in the dialogs. It should take about 2-3 seconds for these programs to run for this particular alignment. Alternatively, we could also load the pre-calculated results of these programs (files <tt>examples/PF00202.S3det</tt> and <tt>examples/PF00202.Xdet</tt>) with "File -&gt; Load method result -&gt;" or the corresponding buttons (<img src="img/xdet.png"  width="16"/>&nbsp;<img src="img/s3det.png"/>).
+		Then, we run the two included programs for locating subfamilies and SDPs with "File -&gt; Run method -&gt;", or with the corresponding buttons (<img src="img/run_xdet.png"/>&nbsp;<img src="img/run_s3det.png"/>). In this case we do not change the command line options for these programs in the dialogs. It should take about 2-3 seconds for these programs to run for this particular alignment. </p>
+
+<p>
+Alternatively, we could also load the pre-calculated results of these programs (files <tt>examples/PF00202.S3det</tt> and <tt>examples/PF00202.Xdet</tt>) by draging these file into JDet's main window (which already contains the alignment) or with "File -&gt; Load method result -&gt;" or the corresponding buttons (<img src="img/xdet.png"  width="16"/>&nbsp;<img src="img/s3det.png"/>). Note that if you drag the files these should have the right extensions (.S3det and .Xdet) in order for the program to known which method is being loaded.
 		</p>
 
 
@@ -49,7 +68,7 @@
 		Xdet is loaded as two methods (Xdet and Entropy -a measure of conservation-) since the results file of that program contains both data. 
 		</p>
 		<p>
-		The results file of S3det contains not only the SDPs but the detected subfamilies as well. The background of the protein IDs is colored according with their subfamily assignment. In this case, S3det finds 4 subfamilies (red, blue, green and yellow). It can be seen that these subfamilies automatically detected by S3det (using only sequence information) are in good agreement with the functional subfamilies as inferred from the protein IDs (see above). The only apparent disagreement is that the functional subfamilies AG* and AR* are reported as a single subfamily by S3det. 
+		The results file of S3det contains not only the SDPs but the detected subfamilies as well. The background of the protein IDs is colored according with their subfamily assignment. In this case, S3det finds 4 subfamilies (red, blue, green and yellow). It can be seen that these subfamilies automatically detected by S3det (using only sequence information) are in good agreement with the functional subfamilies as inferred from the protein IDs (see above). The only apparent disagreement is that the functional subfamilies AG* and AR* are reported as a single subfamily by S3det (yellow subfamily). 
 		</p>
 
 
@@ -60,38 +79,40 @@
 		</a>
 
 		<p>
-		Before starting to analyze the predicted SDP, we are going to incorporate available structure information for this family in order to better understand the role of the SDPs. For that we load and visualize the 3D structure of one of the proteins of the alignment. If you are familiarized with a protein family, probably you will already know whether there is a member of known structure. Otherwise, the best way of knowing that is by making a <a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST search</a> of any sequence in the MSA against the sequences in <a href="http://www.rcsb.org/" target="NEW">PDB</a>, the database of protein structures. Most BLAST servers worldwide allow to select "PDB/RCSB" as the database to search against (i.e. follow this link to 
+		Before starting to analyze the predicted SDPs, we are going to incorporate available structure information for this family in order to better understand the role of the SDPs. For that we load and visualize the 3D structure of one of the proteins of the alignment. 
+
+<!--
+If you are familiar with a protein family, probably you will already know whether there is a member of known structure. Otherwise, the best way of knowing that is by making a <a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST search</a> of any sequence in the MSA against the sequences in <a href="http://www.rcsb.org/" target="NEW">PDB</a>, the database of protein structures. Most BLAST servers worldwide allow to select "PDB/RCSB" as the database to search against (i.e. follow this link to 
 		<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&BLAST_PROGRAMS=blastp&PAGE_TYPE=BlastSearch&SHOW_DEFAULTS=on&LINK_LOC=blasthome&DATABASE=pdb" target="NEW">do a BLAST search against PDB at the NCBI site</a>).
-		</p>
-		<p>
-		In this case, we are going to load the 3D structure of the human <i>ornitine-aminotransferase</i> (PDB code: <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1oat">1OAT</a>). We do that with "File-&gt;Load structure (PDB)" or with the corresponding button (<img src="img/structure.png"/>). In the dialog, we enter the PDB code we are interested in (1OAT) and press "Load from server". Wait until "Download completed" appear in "Status". Alternatively, we could have loaded a local PDB file with the "Browse" button. If you want to try, or you are not connected to the Internet, a local copy of this PDB file is in <tt>examples/1oat.pdb</tt>.
-		</p>
-		<p>
-		Then we indicate that we want to match the "A" chain of this structure with the sequence of the human <i>ornitine-aminotransferase</i> (ID: OAT_HUMAN in our alignment) 
-		(<a href="./img/4_loadstr.png" target="new">Figure 4</a>).
+-->
 		</p>
 
-		<a href="./img/4_loadstr.png" target="new"><img src="./img/4_loadstr.png" border="0" width="400" alt="Figure 4">
+		<p>
+		In this case, we are going to load the 3D structure of the human <i>ornitine-aminotransferase</i> (P04181-OAT_HUMAN in our alignment). We do that with "File-&gt;Load structure (PDB)" or with the corresponding button (<img src="img/structure.png"/>). In the "Alignment sequence" section of the dialog we select "P04181-OAT_HUMAN" and press the "Look for suitable structure for" button besides it (<a href="./img/4_loadstr_n.png" target="new">Figure 4</a>). The program detects that a suitable structure is that of chain A in <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=2oat">PDB code 2OAT</a> (the scores of the BLAST hit appear in the "Status" line) and the PDB code and the chain are inserted into the corresponding text-boxes of the dialog (<a href="./img/4_loadstr_n.png" target="new">Figure 4</a>). Once the suitable PDB was found, press "Load from server" to retrieve that estructure from the <a href="http://www.rcsb.org">RCSB site</a> (this requires an active internet connection). Wait until "Download complete" appears in the "Status" line.
+You could also force the program to use other PDB/chain or load a local PDB file (check the <a href="JDet_help.html">user manual</a>). If you want to try, or you are not connected to the Internet, a local copy of this PDB file is in <tt>examples/1oat.pdb</tt>  
+		</p>
+
+		<a href="./img/4_loadstr_n.png" target="new"><img src="./img/4_loadstr_n.png" border="0" width="400" alt="Figure 4">
 		</a>
 
 		<p>
-		Pressing "Load", a window with information on the alignment between the sequence in the PDB file and the sequence in the alignment appears. After checking that the alignment is Ok, we press "Accept" and the 3D structure shows up (<a href="./img/5_str.png" target="new">Figure 5</a>). Note that the two sequences (that in the PDB and that in the alignment) do not have to be 100% identical: for example, if one of the sequences is a fragment, or if the structure of the protein is not available and we are loading that of a close homolog. 
+		Once the suitable structure was detected and retrieved, press "Load" to load it into <i>JDet</i>. A window with information on the alignment between the sequence in the PDB file and the sequence in the alignment appears. After checking that the alignment is Ok, we press "Accept" and the 3D structure shows up (<a href="./img/5_str.png" target="new">Figure 5</a>). Note that the two sequences (that in the PDB and that in the alignment) do not have to be 100% identical: for example, if one of the sequences is a fragment, or if the structure of the protein is not available and that of a close homolog is used. 
 		</p>
 		<p>
-		The structure of the chain we are interested in ("A" in this case) is highlighted in ribbon, while the other chains in the crystal are shown in backbone. Small molecules (ligands, substrates, cofactors, ...) are highlighted in yellow and spacefill (Figure 5) (<a href="./img/5_str.png" target="new">Figure 5</a>). In the alignment window, the ID of the corresponding sequence is highlighted in black.
+		The structure of the chain we are interested in ("A" in this case) is highlighted in ribbon, while the other chains in the crystal are shown in backbone. Small molecules (ligands, substrates, cofactors, ...) are highlighted in yellow and spacefill (<a href="./img/5_str.png" target="new">Figure 5</a>). In the alignment window, the ID of the corresponding sequence is highlighted in black.
 		</p>
 
 		<a href="./img/5_str.png" target="new"><img src="./img/5_str.png" border="0" width="500" alt="Figure 5">
 		</a>
 
 		<p>
-		To inspect the structural characteristics of the residues predicted by <i>S3Det</i> in the 3D structure, we click the <img src="img/or.png"/> button besides the method's name in order to select all positions reported by that method (according with the selected threshold). These positions are highlighted in the alignment window and the corresponding residues in the 3D structure are changed to green color and sticks representation (<a href="./img/6_s3detsdp.png" target="new">Figure 6</a>). We can change the representation of the residues to "spacefill" in the 3D structure (in order to emphasize them) by entering <tt>spacefill</tt> in Jmol´s text box. Remember that commands typed there affect the last selection.
+		To inspect the structural characteristics of the residues predicted by <i>S3Det</i> in the 3D structure, we click the <img src="img/and.png"/> button besides the method's name in order to select all positions reported by that method (according with the selected threshold). These positions are highlighted in the alignment window and the corresponding residues in the 3D structure are changed to green color and sticks representation (<a href="./img/6_s3detsdp.png" target="new">Figure 6</a>). We can change the representation of the residues to "spacefill" in the 3D structure (in order to emphasize them) by entering <tt>spacefill</tt> in Jmol´s text box. Remember that commands typed there affect the last selection.
 		</p>
 
 		<a href="./img/6_s3detsdp.png" target="new"><img src="./img/6_s3detsdp.png" border="0" width="800" alt="Figure 6">
 		</a>
 		<p>
-		It can be seen that most of these SDPs are around the active site of this protein (as inferred by the presence of the bound PLP cofactor -yellow-) and in the binding surface with the other chain. So it is feasible that these positions are actually responsible for controlling the substrate specificity in this family. Actually, two of these positions (85 and 235 in PDB 1OAT; 26 and 284 in this alignment) have been reported in the literature as capable of modifying the substrate specificity, by single mutant experiments (<a href="http://www.ncbi.nlm.nih.gov/pubmed/16096275">Markova, <i>et al.</i> (2008). <i>J Biol Chem.</i><b>280:</b>36409</a>). To inspect in more detail these two positions we can enter <tt>select 85:A,235A</tt> in Jmol's window, then <tt>color red</tt> and <tt>center 235:A</tt> Finally we zoom-in with the mouse middle button (<a href="./img/7_85-235.png" target="new">Figure 7</a>).
+		It can be seen that most of these SDPs are around the active site of this protein (as inferred by the presence of the bound PLP cofactor -yellow-) and in the binding surface with the other chain. So it is feasible that these positions are actually responsible for controlling the substrate specificity in this family. Actually, two of these positions (85 and 235 in PDB 2OAT; 26 and 284 in this alignment) have been reported in the literature as capable of modifying the substrate specificity, by single mutant experiments (<a href="http://www.ncbi.nlm.nih.gov/pubmed/16096275">Markova, <i>et al.</i> (2008). <i>J Biol Chem.</i><b>280:</b>36409</a>). To inspect in more detail these two positions we can enter <tt>select 85:A,235A</tt> in Jmol's window, then <tt>color red</tt> and <tt>center 235:A</tt> Finally we zoom-in with the mouse middle button (<a href="./img/7_85-235.png" target="new">Figure 7</a>).
 		</p>
 
 		<a href="./img/7_85-235.png" target="new"><img src="./img/7_85-235.png" border="0" width="500" alt="Figure 7">
@@ -121,6 +142,7 @@
 
 		<p>
 		Now we are going to inspect the characteristics of the sequence and residue "spaces" which define this family of proteins. We do that with "File-&gt;Show sequence spaces" or with the <img src="img/cluster.png"/> button in the toolbar. In the "protein space" (left), we can see how the proteins cluster in distinct regions of the space defining the different subfamilies. We saw above how the yellow subfamily reported by S3Det actually comprised two functional subfamilies (AG* and AR*). In this "protein space" it is clear the the yellow cluster is actually composed of two sub-clusters. We select the yellow sub-cluster closer to the center of coordinates (by dragging with the mouse while pressing SHIFT). The points of these sub-cluster change to black and the IDs of the corresponding proteins in the alignment to grey (<a href="./img/10_seqspaces.png" target="new">Figure 10</a>). It can be seen that this sub-cluster corresponds to the AR* functional subfamily (and hence the other sub-cluster to the AG*) (<a href="./img/10_seqspaces.png" target="new">Figure 10</a>). Sometimes the fixed threshold used by <i>S3Det</i> to decide whether to subdivide further a cluster or not is not enough to automatically pick up the "biological" subfamilies and, for that reason, visually inspecting the original space can provide more insight into the structure of the family.
+
 		</p>
 
 		<a href="./img/10_seqspaces.png" target="new"><img src="./img/10_seqspaces.png" border="0" width="800" alt="Figure 10">

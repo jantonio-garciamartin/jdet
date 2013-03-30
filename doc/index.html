@@ -1,0 +1,126 @@
+<html>
+	<HEAD>
+		<LINK rel="icon" href="favicon.ico" />
+		<LINK href="css/styles.css" rel="stylesheet" type="text/css">
+		<TITLE> JDet - Home page</TITLE>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-25985083-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	</HEAD>
+	<BODY>
+<a href="http://csbg.cnb.csic.es/">[Computational Systems Biology Group @CNB-CSIC]</a>
+<hr>
+
+		<center>
+			<h2><i>JDet</i> Home</h2>
+		</center>
+		<p>JDet  is a multiplatform software for the interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures. It contains the set of tools and features we consider critical for the daily work with this kind of data, and that previously were disseminated in different packages and web servers. The package includes two of our recently developed programs for extracting this kind of information from protein alignments. JDet can be extended via plugins to implement other methods or parse their results.</p>
+		<p><center><img width="90%" src="img/jDet_features.png"/></center></p>
+		<p>For a general description of the package and the biological problem which prompted its development, as well as more information on multiple sequence alignments (MSAs), conserved positions, specificity determining positions (SDPs), etc., please take a look at the following article and the references cited there: <a href="http://bioinformatics.oxfordjournals.org/content/early/2011/12/09/bioinformatics.btr688"> Muth <i>et al.</i> (2011). <i>Bioinformatics</i>. <b>doi: 10.1093/bioinformatics/btr688</b> </a>   </p>
+		<h3>Download</h3>
+		<p>	
+			<ul>
+				<li><u>Binaries</u>: <b> <a href="bin/JDet_1.4.zip">JDet_1.4.zip</a></b>. The .zip file contains a multiplatform distribution of <i>JDet</i> that was tested in recent versions of Linux, MS-Windows and Mac OSX. It also contains instalation instructions, examples and documentation.
+
+					<br><br>
+				</li>
+				<li><u>Source code</u>: <i>JDet</i> is open source under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>, and the code can be downloaded from <b><a href="http://code.google.com/p/jdet/">Google Code</a> </b>website. You are welcome to contribute to the project.
+				</li>
+				<br>
+				<li><u>Plugins</u>: <i>JDet</i> can be extended with plugins writen in Java. Methods for extracting important positions from alignments, or filters for parsing method results can be added to <i>JDet</i> with this system. A plugin for parsing <a href="http://consurftest.tau.ac.il/">Conseq/Consurf<a> results is included with the distribution. We will maintain here a <b>repository of plugins</b> as more of these are developed. From a user point of view, installing plugins is just copying .jar files into JDet's directory. More information is given in the User Manual below. Here you can find <a href="http://csbg.cnb.csic.es/JDet/util/JDet-plugin-samples.zip">detailed <b>information for developers </b>on how to code plugins for <i>JDet</i></a>, including example code, etc. 
+				</li>
+			</ul>
+		</p>
+
+		<h3>Documentation</h3>
+		<p>Here you can find on-line versions of the <b><a href="./JDet_help.html">user manual</a></b> and the <b><a href="./JDet_tutorial.html">guided tutorial</a></b>. These are also included in the dowloadable distribution.</p>
+
+
+		<h3>References</h3>
+		<p>	Please cite the latest version of the following reference when reporting any data or image generated with the program: <br/>
+<ul><li><text style="font-size:12px;">
+Thilo Muth, Juan A. Garcia-Martin, Antonio Rausell, David Juan, Alfonso Valencia & Florencio Pazos (2011).
+JDet: Interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures. <i>Bioinformatics</i>. <a href="http://bioinformatics.oxfordjournals.org/content/early/2011/12/09/bioinformatics.btr688"><b> doi: 10.1093/bioinformatics/btr688</b></a>
+</text></ul></p>
+
+
+
+		<h3>Included software and licenses</h3>
+		<p>JDet includes binary distributions of two functional residue detection programs:
+			<ul>
+				<li>
+					<b><a href="http://pdg.cnb.uam.es/pazos/Xdet/">Xdet</a></b>
+					<br/>
+					<ul>
+						<li><text style="font-size:12px;">Antonio del Sol, Florencio Pazos &amp; Alfonso Valencia.
+							(2003). Automatic Methods for Predicting Functionally Important
+							Residues. <I>Journal of Molecular Biology</I>. <B>326(4):</B>1289-1302.
+							<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12589769&dopt=Abstract">[PubMed:12589769]</a> 
+							<a href="http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6WK7-47WBSCV-X&_user=217827&_coverDate=02%2F28%2F2003&_rdoc=24&_fmt=full&_orig=browse&_srch=%23toc%236899%232003%23996739995%23385689!&_cdi=6899&_sort=d&_docanchor=&_acct=C000011279&_version=1&_urlVersion=0&_userid=217827&md5=3919e6161d920fdbe69f9c8a978d0584">[HTML]</a> 
+							<a href="http://pdg.cnb.uam.es/pazos/papers/treedet_jmb.pdf">[PDF]</a> </text>
+							<br/>
+						</li>
+						 <li><text style="font-size:12px;">Florencio Pazos, Antonio Rausell & Alfonso Valencia. (2006).
+							 Phylogeny-independent detection of functional residues.
+							 <i>Bioinformatics</i>.
+							 <b>22(12):</b>1440-1448.</text>
+							<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16551661&query_hl=1">[PubMed:16551661]</a> 
+							<a href="http://bioinformatics.oxfordjournals.org/cgi/content/full/22/12/1440">[HTML]</a> 
+							<a href="http://pdg.cnb.uam.es/pazos/papers/Xdet_Bioinformatics_06.pdf">[PDF]</a> 
+						</li>						
+					</ul>
+					<br/>
+
+						Command line versions of Xdet are also distributed independently of JDet. Binaries of Xdet for different architectures are available upon request. Contact Florencio Pazos (<img valign="bottom" src="img/email_pazos.png"/>).
+					
+					</text>
+				</li>
+				<br>
+				<li>
+					<b>S3det</b><br/>
+					<ul>
+					  <li>
+					<text style="font-size:12px;">
+						Antonio Rausell, David Juan, Florencio Pazos & Alfonso Valencia. (2010).
+						Protein interactions and ligand binding: From protein subfamilies to functional specificity.
+						<i>Proc Natl Acad Sci USA.</i> 
+						<b>107(5):</b>1995-2000. 
+						<a href="http://www.ncbi.nlm.nih.gov/pubmed/20133844">[PubMed:20133844]</a> 
+						<a href="http://www.pnas.org/content/107/5/1995.abstract?etoc">[HTML]</a> 
+						<a href="http://www.pnas.org/content/107/5/1995.full.pdf+html">[PDF]</a> 
+						
+					</text>
+					</ul>
+					<br/>
+
+					Command line versions of S3det are also distributed independently of JDet. Binaries
+ for different architectures as well as the source code are available upon request. Contact Antonio Rausell (<img valign="bottom" src="img/email_rausell.png"/>).
+					  </ul>
+				</li>
+			</ul>
+		</p>
+		<p>JDet uses <b><a target="_blank" href="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-138252.html">Java3D<sup><font size="-2">TM</font>,</sup></a></b> for <a href="http://download.java.net/media/java3d/builds/release/1.4.0_01/LICENSE-Java3D-v1_4_0.txt" target="_blank">research and instructional Use</a></p>
+		<p>JDet also includes the <b><a href="http://www.jmol.org/">Jmol</a></b> plugin:  <text style="font-size:12px;">Jmol: an open-source Java viewer for chemical structures in 3D. <a target="_blank" href="http://www.jmol.org/">http://www.jmol.org/ </a></text></p>
+		<p>Other third-party libraries are referenced in <a href="http://code.google.com/p/jdet/">JDet's site at Google Code</a></p>
+
+
+
+		<h3>Contact</h3>
+		<p>For general questions/queries about the software, please contact Florencio Pazos (<img valign="bottom" src="img/email_pazos.png"/>), for technical questions contact  Juan A. Garcia Martin (<img valign="bottom" src="img/email_jagarcia.png"/>).</p>
+
+<hr>
+<a href="http://csbg.cnb.csic.es/">[Computational Systems Biology Group @CNB-CSIC]</a>
+
+	</BODY>
+</html>
+
