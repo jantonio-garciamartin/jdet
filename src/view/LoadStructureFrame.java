@@ -31,8 +31,9 @@ import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 import org.pushingpixels.substance.api.skin.BusinessBlackSteelSkin;
 
 import util.Alignment;
-import util.BlastPDB;
 import util.Constants;
+import util.NCBIBlastPDB;
+import util.PDBAtomReader;
 import util.PDBFile;
 import util.PdbFileOpener;
 import util.ScreenConfig;
@@ -144,9 +145,9 @@ public class LoadStructureFrame extends JDialog{
 				downloadInfoArea.setText("Blasting....");
 				statusPnl.paintImmediately(statusPnl.getVisibleRect());
 				System.out.println(sequenceToBlast);
-				String blastResult = BlastPDB.blastThePDB(sequenceToBlast, 25.0);
+				String blastResult = NCBIBlastPDB.blastThePDB(sequenceToBlast, 25.0);
 				if(blastResult != null){
-					if (BlastPDB.evaluateBestHit(blastResult)){
+					if (NCBIBlastPDB.evaluateBestHit(blastResult)){
 						String[] splitResults = blastResult.split("\\|");
 						pdbCodeTtf.setText(splitResults[0]);
 						chainTtf.setText(splitResults[1]);
@@ -276,7 +277,10 @@ public class LoadStructureFrame extends JDialog{
 					try {
 						// Load from the text field
 						SequenceImpl alignSeq = viewprops.getAlObj().getSequenceAt(comboBox.getSelectedIndex());
-						String pdbSequence = new PDBFile(pdbFileTtf.getText(), chainTtf.getText()).getPdbSequence();
+						// Read extract amino acid sequence from PDB file
+						String pdbSequence = new PDBAtomReader(pdbFileTtf.getText(), chainTtf.getText()).getPdbSequence();
+						// Read aminoacid reference sequence from PDB file 
+						// String pdbSequence = new PDBFile(pdbFileTtf.getText(), chainTtf.getText()).getPdbSequence();
 						if(pdbSequence.length()==0){
 							JOptionPane.showMessageDialog(new JFrame(), "Error! Retrieved sequence is empty, check selected chain.");
 						}

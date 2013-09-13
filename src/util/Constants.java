@@ -14,8 +14,8 @@ public class Constants {
 
 	// General Application Constants
 	public static final String APPNAME = "JDet";
-	public static final String VERSIONDATE = "2011/11/25";
-	public static final String VERSION = "1.4";
+	public static final String VERSIONDATE = "2013/09/13";
+	public static final String VERSION = "1.4.3";
 	public static final String APPTITLE = APPNAME + " " + VERSION + " ("	+ VERSIONDATE + ")";	
 	public static final int DEFAULT_WIDTH = 1100;
 	public static final int DEFAULT_HEIGHT = 650;
@@ -37,11 +37,16 @@ public class Constants {
 	
 	// PDB FPT File server location
 	public static final String FTPSERVER = "ftp://ftp.wwpdb.org/pub/pdb/data/structures/all/pdb/";
-	public static final String PDB_WSDLSERVER = "http://www.pdb.org/pdb/services/pdbws";
+	public static final String PDB_WSDLSERVER = "http://www.pdb.org/pdb/services/pdbws?wsdl";
 	public static final double PDB_IDENTITIES_THRESHOLD = 25;
 	public static final double PDB_EVALUE_THRESHOLD = 0.0001;
 	
-	
+	// Parameters and URL for PDB search
+	public static final String NCBIBLASTURL = "http://www.ncbi.nlm.nih.gov/blast/Blast.cgi";
+	public static final String NCBIBLAST_QUERY_PARAMS = "?DATABASE=pdb&BLAST_PROGRAM=blastp&PROGRAM=blastp&FORMAT_TYPE=XML&HITLIST_SIZE=1&CMD=Put&QUERY_BELIEVE_DEFLINE=no&FORMAT_OBJECT=Alignment&EXPECT_LOW=1e-25&QUERY=";
+	public static final String NCBIBLAST_RESPONSE_DEFPARAMS = "?FORMAT_TYPE=Text&ALIGNMENTS=1&DESCRIPTION=100&CMD=Get&RID=";
+	public static final long NCBIBLAST_TIMEOUT = 300000;
+
 	// External analisys and filtering methods
 	public static final String CONFIG_DIR = "."+dS+"conf"+dS;
 	public static final String METHODS_DIR = "."+dS+"programs"+dS;

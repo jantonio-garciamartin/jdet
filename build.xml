@@ -88,6 +88,7 @@
 		<!-- Copy directories required for distribituion -->
 		<copy todir="${target.dir}">
 		    <fileset dir=".">
+			<include name="README.txt" />
 			<include name="conf/**" />
 			<include name="plugins/**" />
 			<include name="programs/**" />
