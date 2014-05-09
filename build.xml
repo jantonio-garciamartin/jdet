@@ -99,6 +99,13 @@
 	<target name="clean" description="Deletes all generated class files!">
 		<delete dir="${target.classes}" />
 		<delete file="${target.dir}/${application.name}-${application.version}.jar" />
+		<delete file="${target.dir}/README.txt"/>
+		<delete>
+			<fileset dir=".">
+				<include name="*.pdb"/>
+				<include name="*.ent.gz"/>
+			</fileset>
+		</delete>
 		<delete dir="${target.dir}/conf" />
 		<delete dir="${target.dir}/plugins" />
 		<delete dir="${target.dir}/programs" />
