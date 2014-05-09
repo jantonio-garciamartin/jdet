@@ -316,7 +316,8 @@ public class LoadStructureFrame extends JDialog{
 					// Load download file.
 					try {
 						SequenceImpl alignSeq = viewprops.getAlObj().getSequenceAt(comboBox.getSelectedIndex());
-						String pdbSequence = new PDBFile(pdbfileOpener.getPdbFile(), chainTtf.getText()).getPdbSequence();
+						String pdbSequence = new PDBAtomReader(pdbfileOpener.getPdbFile(), chainTtf.getText()).getPdbSequence();
+
 						if(pdbSequence.length()==0){
 							JOptionPane.showMessageDialog(new JFrame(), "Error! Retrieved sequence is empty, check selected chain.");
 						}
