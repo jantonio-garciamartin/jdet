@@ -3,19 +3,8 @@
 		<LINK rel="icon" href="favicon.ico" />
 		<LINK href="css/styles.css" rel="stylesheet" type="text/css">
 		<TITLE> JDet - Home page</TITLE>
-		<script type="text/javascript">
-
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-25985083-1']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
+		<META NAME="Description" CONTENT="JDet: Interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures.">
+		<META NAME="Keywords" CONTENT="JDet, Multiple alignment, sequence space, Conserved residues, function related, conservation, Xdet, S3det, CSBG, CNB">
 	</HEAD>
 	<BODY>
 <a href="http://csbg.cnb.csic.es/">[Computational Systems Biology Group @CNB-CSIC]</a>
@@ -26,14 +15,19 @@
 		</center>
 		<p>JDet  is a multiplatform software for the interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures. It contains the set of tools and features we consider critical for the daily work with this kind of data, and that previously were disseminated in different packages and web servers. The package includes two of our recently developed programs for extracting this kind of information from protein alignments. JDet can be extended via plugins to implement other methods or parse their results.</p>
 		<p><center><img width="90%" src="img/jDet_features.png"/></center></p>
-		<p>For a general description of the package and the biological problem which prompted its development, as well as more information on multiple sequence alignments (MSAs), conserved positions, specificity determining positions (SDPs), etc., please take a look at the following article and the references cited there: <a href="http://bioinformatics.oxfordjournals.org/content/early/2011/12/09/bioinformatics.btr688"> Muth <i>et al.</i> (2011). <i>Bioinformatics</i>. <b>doi: 10.1093/bioinformatics/btr688</b> </a>   </p>
+		<p>For a general description of the package and the biological problem which prompted its development, as well as more information on multiple sequence alignments (MSAs), conserved positions, specificity determining positions (SDPs), etc., please take a look at the following article: <a href="http://bioinformatics.oxfordjournals.org/content/28/4/584.full?etoc"> Muth <i>et al.</i> (2012). <i>Bioinformatics</i> <b>28</b> (4): 584-586.</a>; and the references cited there, specially <a href="http://www.ncbi.nlm.nih.gov/pubmed/16551661?dopt=Abstract">Pazos et <i>al.</i> (2006) <i>Bioinformatics</i>. <b>22(12):</b>1440-1448</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/20133844">Rausell et <i>al.</i> (2010) <i>PNAS</i>. <b>107(5)</b>1995-2000</a>   </p>
 		<h3>Download</h3>
 		<p>	
 			<ul>
-				<li><u>Binaries</u>: <b> <a href="bin/JDet_1.4.zip">JDet_1.4.zip</a></b>. The .zip file contains a multiplatform distribution of <i>JDet</i> that was tested in recent versions of Linux, MS-Windows and Mac OSX. It also contains instalation instructions, examples and documentation.
-
-					<br><br>
+				<li><u>Binaries</u>: <b> <a href="bin/JDet_1.4.4.zip">JDet_1.4.4.zip</a></b>. The .zip file contains a multiplatform distribution of <i>JDet</i> that was tested in recent versions of Linux, MS-Windows and Mac OSX. Command-line versions of <i>Xdet</i> and <i>S3Det</i> are also included (see below). This file also contains instalation instructions, examples and documentation.<br/>
+					Previous releases:
+					<ul>
+						<li><a href="bin/JDet_1.4.3.zip">JDet_1.4.3.zip</a></li>
+						<li><a href="bin/JDet_1.4.2-alpha.zip">JDet_1.4.2.zip</a></li>
+						<li><a href="bin/JDet_1.4.1.zip">JDet_1.4.1.zip</a></li>
+					</ul>
 				</li>
+				<br>
 				<li><u>Source code</u>: <i>JDet</i> is open source under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>, and the code can be downloaded from <b><a href="http://code.google.com/p/jdet/">Google Code</a> </b>website. You are welcome to contribute to the project.
 				</li>
 				<br>
@@ -43,20 +37,22 @@
 		</p>
 
 		<h3>Documentation</h3>
-		<p>Here you can find on-line versions of the <b><a href="./JDet_help.html">user manual</a></b> and the <b><a href="./JDet_tutorial.html">guided tutorial</a></b>. These are also included in the dowloadable distribution.</p>
+		<p>Here you can find on-line versions of the <b><a href="./JDet_help.html">user manual</a></b> and the <b><a href="./JDet_tutorial.html">guided tutorial</a></b>. These are also included in the dowloadable distribution.<br/>
+		   <text style="color:red"><b> A list of <a href="./JDet_known_bugs.html">known bugs</a> is available, please read it.</b></text> If you want to report new bugs or be noticed about new versions and fixed bugs please send an email to Juan A. Garcia Martin (<img valign="bottom" src="img/email_jagarcia.png"/>). 
+		</p>
 
 
 		<h3>References</h3>
-		<p>	Please cite the latest version of the following reference when reporting any data or image generated with the program: <br/>
+		<p>	Please cite the following reference when reporting any data or image generated with the program: <br/>
 <ul><li><text style="font-size:12px;">
-Thilo Muth, Juan A. Garcia-Martin, Antonio Rausell, David Juan, Alfonso Valencia & Florencio Pazos (2011).
-JDet: Interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures. <i>Bioinformatics</i>. <a href="http://bioinformatics.oxfordjournals.org/content/early/2011/12/09/bioinformatics.btr688"><b> doi: 10.1093/bioinformatics/btr688</b></a>
+Thilo Muth, Juan A. Garcia-Martin, Antonio Rausell, David Juan, Alfonso Valencia & Florencio Pazos (2012).
+JDet: Interactive calculation and visualization of function-related conservation patterns in multiple sequence alignments and structures. <a href="http://bioinformatics.oxfordjournals.org/content/28/4/584.full?etoc"> <i>Bioinformatics</i> <b>28</b>(4): 584-586.</a>
 </text></ul></p>
 
 
 
 		<h3>Included software and licenses</h3>
-		<p>JDet includes binary distributions of two functional residue detection programs:
+		<p>JDet includes binary distributions of two functional residue detection programs, <i>Xdet</i> and <i>S3Det</i>. These binaries can be also used outside the JDet environment, directly from the command line, e.g. for massive/batch runs (see Documentation above). 
 			<ul>
 				<li>
 					<b><a href="http://pdg.cnb.uam.es/pazos/Xdet/">Xdet</a></b>
@@ -73,10 +69,10 @@ JDet: Interactive calculation and visualization of function-related conservation
 						 <li><text style="font-size:12px;">Florencio Pazos, Antonio Rausell & Alfonso Valencia. (2006).
 							 Phylogeny-independent detection of functional residues.
 							 <i>Bioinformatics</i>.
-							 <b>22(12):</b>1440-1448.</text>
+							 <b>22(12):</b>1440-1448.
 							<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16551661&query_hl=1">[PubMed:16551661]</a> 
 							<a href="http://bioinformatics.oxfordjournals.org/cgi/content/full/22/12/1440">[HTML]</a> 
-							<a href="http://pdg.cnb.uam.es/pazos/papers/Xdet_Bioinformatics_06.pdf">[PDF]</a> 
+							<a href="http://pdg.cnb.uam.es/pazos/papers/Xdet_Bioinformatics_06.pdf">[PDF]</a> </text>
 						</li>						
 					</ul>
 					<br/>
@@ -104,7 +100,8 @@ JDet: Interactive calculation and visualization of function-related conservation
 					<br/>
 
 					Command line versions of S3det are also distributed independently of JDet. Binaries
- for different architectures as well as the source code are available upon request. Contact Antonio Rausell (<img valign="bottom" src="img/email_rausell.png"/>).
+ for different architectures as well as the source code are available upon request. Contact Antonio Rausell 
+(<!-- <img valign="bottom" src="img/email_rausell.png"/> --> <font size=+1>antonio.rausell@isb-sib.ch</font>).
 					  </ul>
 				</li>
 			</ul>
