@@ -222,6 +222,9 @@ public class AlignPanel extends JPanel implements Printable {
 				if(y+yQuot<=viewProps.getAlObj().getHeight()){
 					viewProps.setYEnd(y + yQuot);
 				}
+				else{
+					viewProps.setYEnd(viewProps.getAlObj().getHeight());
+				}
 			}
 		    
 			if (evt.getSource() == horizontalScrollbar) {
