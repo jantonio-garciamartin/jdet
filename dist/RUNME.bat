@@ -1,1 +1,1 @@
-java -cp jdet-1.4.4.jar;plugins/method/*;plugins/conversion/* view.AlignFrame
+java -cp jdet-1.4.5.jar;plugins/method/*;plugins/conversion/* view.AlignFrame
