@@ -53,7 +53,7 @@ public class FilterAlignment  extends JDialog {
 	private JTextField paramRttf;
 	private JTextField paramFttf;
 	private JCheckBox paramGttf;
-	private JComboBox presetsCombo;
+	private JComboBox<String> presetsCombo;
 	private HashMap<String, PresetItem> presets;
 	
 	public FilterAlignment(){}
@@ -140,12 +140,13 @@ public class FilterAlignment  extends JDialog {
 
 		// Textfields
 		JLabel presetsLabel = new JLabel("Load default values for");
-		presetsCombo = new JComboBox();
+		presetsCombo = new JComboBox<String>();
 		presets = new HashMap<String, PresetItem>();
 		loadPresets(presets, presetsCombo);
 		presetsCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox)e.getSource();
+				@SuppressWarnings("unchecked")
+				JComboBox<String> cb = (JComboBox<String>)e.getSource();
 				String selectedPreset = cb.getSelectedItem().toString();
 				loadPresetValues(selectedPreset);
 			}
@@ -229,7 +230,7 @@ public class FilterAlignment  extends JDialog {
 		this.paramGttf.setSelected(preset.getgValue()); 
 	}
 	
-	public void loadPresets(HashMap<String, PresetItem> presets, JComboBox newPresetsCombo){
+	public void loadPresets(HashMap<String, PresetItem> presets, JComboBox<String> newPresetsCombo){
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(Constants.FILTER_PRESETS_FILE));
 			String nextLine = reader.readLine();
@@ -244,6 +245,7 @@ public class FilterAlignment  extends JDialog {
 				        tokenList.add(tokenizer.nextToken());
 				    }
 				    if(tokenList.size()<5){
+				    	reader.close();
 				    	throw new IOException("Bad format in "+Constants.FILTER_PRESETS_FILE);
 				    }
 				    // Add the tokens to the Presets 
@@ -252,6 +254,7 @@ public class FilterAlignment  extends JDialog {
 				}
 			    nextLine = reader.readLine();				
 			}
+		    reader.close();
 		}catch(IOException ex){
 			JOptionPane.showMessageDialog(null,	"Error applying filter! \n"	+ "Details:\n       "+(ex.getMessage().indexOf(":")!= -1 ? ex.getMessage().substring(ex.getMessage().indexOf(":")+1): ex.getMessage()),"File load error", JOptionPane.ERROR_MESSAGE);
 			

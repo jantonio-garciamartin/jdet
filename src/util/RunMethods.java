@@ -231,7 +231,12 @@ public class RunMethods  extends JDialog {
  			String command = Constants.METHODS_DIR;
  			
 			if(System.getProperty("os.name").toLowerCase().indexOf("nix") >=0 || System.getProperty("os.name").toLowerCase().indexOf("linux") >=0){
-	 			command += "xdet_linux32";	
+				if(System.getProperty("os.arch").indexOf("amd64")>=0){
+					command += "xdet_linux64";
+				}
+				else{
+					command += "xdet_linux32";
+				}
 	 		}
 	 		else if(System.getProperty("os.name").toLowerCase().indexOf("win") >=0){
 	 			command += "xdet.exe";
@@ -437,6 +442,7 @@ public class RunMethods  extends JDialog {
 						proc.waitFor();
 						if(proc.exitValue()!= 0){
 							JOptionPane.showMessageDialog(null,"Error running S3Det! \n"+ "Rscript was not found on specified path.\nPlease check if R is installed and the correct path of Rscript is included in programs/conf.h file.");
+						    reader.close();
 							return;
 						}
 						
@@ -449,6 +455,7 @@ public class RunMethods  extends JDialog {
 						s2.start ();
 
 						proc.waitFor();
+					    reader.close();
 
 					} catch (FileNotFoundException e) {
 						System.out.println("File not found error: "+e.getMessage());

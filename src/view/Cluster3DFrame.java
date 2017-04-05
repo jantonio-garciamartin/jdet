@@ -431,7 +431,6 @@ public class Cluster3DFrame extends JFrame implements ItemListener,Observer {
 	 * 
 	 * @param objRoot Branchgroup where the clusters are drawn
 	 */
-	@SuppressWarnings("unchecked")
 	public void repaintClusters(BranchGroup objRoot) {
 		Enumeration rootChildren = objRoot.getAllChildren();
 		Vector<TransformGroup> vRootChildren = new Vector<TransformGroup>();
@@ -472,7 +471,6 @@ public class Cluster3DFrame extends JFrame implements ItemListener,Observer {
 	 * 
 	 * @param objRoot Branchgroup where the clusters are drawn
 	 */
-	@SuppressWarnings("unchecked")
 	public void updateColors(BranchGroup objRoot) {
 		Enumeration rootChildren = objRoot.getAllChildren();
 		Vector<TransformGroup> vRootChildren = new Vector<TransformGroup>();
@@ -774,7 +772,6 @@ public class Cluster3DFrame extends JFrame implements ItemListener,Observer {
 			updateColors(branchGroup);
 		}
 	}
-	@SuppressWarnings("unchecked")
 	public void enablePicking(Node node) {
 
 	    node.setPickable(true);

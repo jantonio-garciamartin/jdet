@@ -34,7 +34,6 @@ import util.Alignment;
 import util.Constants;
 import util.NCBIBlastPDB;
 import util.PDBAtomReader;
-import util.PDBFile;
 import util.PdbFileOpener;
 import util.ScreenConfig;
 import util.SequenceManager;
@@ -69,7 +68,7 @@ public class LoadStructureFrame extends JDialog{
 	private JLabel chainLbl;
 	private JTextField chainTtf;
 	private AlignViewProps viewprops;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	//private JLabel idLbl;
 	private JButton blastPdbOnlineBtn;	
 	private JPanel pdbFilePnl;
@@ -147,7 +146,7 @@ public class LoadStructureFrame extends JDialog{
 				System.out.println(sequenceToBlast);
 				String blastResult = NCBIBlastPDB.blastThePDB(sequenceToBlast, 25.0);
 				if(blastResult != null){
-					if (NCBIBlastPDB.evaluateBestHit(blastResult)){
+					if (!blastResult.isEmpty() && NCBIBlastPDB.evaluateBestHit(blastResult)){
 						String[] splitResults = blastResult.split("\\|");
 						pdbCodeTtf.setText(splitResults[0]);
 						chainTtf.setText(splitResults[1]);
@@ -177,7 +176,7 @@ public class LoadStructureFrame extends JDialog{
 		}
 		
 		// Option comboboxes for axes
-		comboBox = new JComboBox(names);
+		comboBox = new JComboBox<String>(names);
 		if(SequenceManager.getLastSelected()!= null){
 			comboBox.setSelectedItem(SequenceManager.getLastSelected());
 		}

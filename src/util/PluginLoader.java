@@ -81,10 +81,12 @@ public class PluginLoader {
 	@SuppressWarnings("unchecked")
 	public static void loadMethodPlugin(String name, AlignObject alObj, AlignFrame parent){
 		UDMObject udmObject = new UDMObject();
+		@SuppressWarnings("rawtypes")
 		Class [] classParm = null;
 		Object [] objectParm = null;
 		         
 		try {
+			@SuppressWarnings("rawtypes")
 			Class cl = Class.forName(Constants.METHOD_PLUGINS_PACKAGE+"."+name);
 			Constructor<MethodPlugin> co = cl.getConstructor(classParm);
 			MethodPlugin dp =  (MethodPlugin) co.newInstance(objectParm);
@@ -164,10 +166,12 @@ public class PluginLoader {
 	@SuppressWarnings("unchecked")
 	public static void loadConversionPlugin(String name, AlignObject alObj, AlignFrame parent){
 		UDMObject udmObject = new UDMObject();
+		@SuppressWarnings("rawtypes")
 		Class [] classParm = null;
 		Object [] objectParm = null;
 		         
 		try {
+			@SuppressWarnings("rawtypes")
 			Class cl = Class.forName(Constants.CONVERSION_PLUGINS_PACKAGE+"."+name);
 			Constructor<ConversionPlugin> co = cl.getConstructor(classParm);
 			ConversionPlugin dp =  (ConversionPlugin) co.newInstance(objectParm);

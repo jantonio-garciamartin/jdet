@@ -274,7 +274,8 @@ public class S3DetParser {
 				    }
 				   s3detObject.setNumberOfSelectedAxes(new Integer(tokenList.get(5)));				    	    
 				}
-			}			
+			}
+			reader.close();
 			
 			//Convert the seqCoordList to the object array
 			SequenceCoordinates[] seqCoordinates = new SequenceCoordinates[seqCoordList.size()];
@@ -342,7 +343,6 @@ public class S3DetParser {
 			//Add the hash maps to the S3Det object
 			s3detObject.setPos2PredPosition(pos2predPos);	
 			s3detObject.setName2ClusterIndex(name2cluster);
-			reader.close();
 
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);

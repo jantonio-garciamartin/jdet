@@ -58,6 +58,7 @@ public class MfaParser {
 						}							
 					} else {
 						if(firstline && !nextLine.trim().equals("")){
+							reader.close();
 							throw new IOException("Sequence must start with >");
 						}
 						nextLine=nextLine.toUpperCase(); 
@@ -66,6 +67,7 @@ public class MfaParser {
 								nextLine = nextLine.substring(0,i);
 							}
 							else if(!Constants.AA_CODES.containsKey(nextLine.charAt(i)+"") &&  nextLine.charAt(i)!='.'){
+								reader.close();
 								throw new IOException("Invalid characters in the sequence");
 							}
 						}
@@ -76,6 +78,7 @@ public class MfaParser {
 				nextLine = reader.readLine();
 				firstline = false;		
 			}
+			reader.close();
 			proteinSequences.add(stringBf.toString().replace(".", "-"));
 			
 			// Convert array lists to arrays
@@ -95,7 +98,7 @@ public class MfaParser {
 			// Set the values into the alignObject
 			alignObject.setSequences(sequences);
 			alignObject.setProteinNumber(proteinCounter);
-			reader.close();
+
 
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);

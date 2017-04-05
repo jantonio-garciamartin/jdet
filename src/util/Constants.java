@@ -14,8 +14,8 @@ public class Constants {
 
 	// General Application Constants
 	public static final String APPNAME = "JDet";
-	public static final String VERSIONDATE = "2015/09/02";
-	public static final String VERSION = "1.4.6";
+	public static final String VERSIONDATE = "2017/04/04";
+	public static final String VERSION = "1.4.7";
 	public static final String APPTITLE = APPNAME + " " + VERSION + " ("	+ VERSIONDATE + ")";	
 	public static final int DEFAULT_WIDTH = 1100;
 	public static final int DEFAULT_HEIGHT = 650;
@@ -42,7 +42,7 @@ public class Constants {
 	public static final double PDB_EVALUE_THRESHOLD = 0.0001;
 	
 	// Parameters and URL for PDB search
-	public static final String NCBIBLASTURL = "http://www.ncbi.nlm.nih.gov/blast/Blast.cgi";
+	public static final String NCBIBLASTURL = "https://www.ncbi.nlm.nih.gov/blast/Blast.cgi";
 	public static final String NCBIBLAST_QUERY_PARAMS = "?DATABASE=pdb&BLAST_PROGRAM=blastp&PROGRAM=blastp&FORMAT_TYPE=XML&HITLIST_SIZE=1&CMD=Put&QUERY_BELIEVE_DEFLINE=no&FORMAT_OBJECT=Alignment&EXPECT_LOW=1e-25&QUERY=";
 	public static final String NCBIBLAST_RESPONSE_DEFPARAMS = "?FORMAT_TYPE=Text&ALIGNMENTS=1&DESCRIPTION=100&CMD=Get&RID=";
 	public static final long NCBIBLAST_TIMEOUT = 300000;

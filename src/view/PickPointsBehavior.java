@@ -87,7 +87,6 @@ public class PickPointsBehavior extends Behavior {
 	    wakeupOn (mouseCriterion);
 	}
 
-	@SuppressWarnings("unchecked")
 	public void processStimulus (Enumeration criteria) {
 		WakeupCriterion wakeup;
 		AWTEvent[] event;
@@ -356,7 +355,6 @@ public class PickPointsBehavior extends Behavior {
 		} 
     }
     
-    @SuppressWarnings("unchecked")
 	private void setRotation(boolean value) {
 		Enumeration rootChildren = objRoot.getAllChildren();
 		while(rootChildren.hasMoreElements()){

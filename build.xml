@@ -91,11 +91,14 @@
 			<include name="README.txt" />
 			<include name="conf/**" />
 			<include name="plugins/**" />
-			<include name="programs/**" />
+			<include name="programs/**" /> 
 			<include name="tmp/**" />
 		    </fileset>
 		</copy>
-	    </target>
+		<exec executable="cp">
+			<arg line="-pr ${basedir}/programs ${target.dir}"/>
+		</exec>
+	</target>
 	<target name="clean" description="Deletes all generated class files!">
 		<delete dir="${target.classes}" />
 		<delete file="${target.dir}/${application.name}-${application.version}.jar" />

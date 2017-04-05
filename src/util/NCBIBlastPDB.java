@@ -7,9 +7,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class NCBIBlastPDB {
 	public static String blastThePDB(String _sequence, double _eCutOff) {
@@ -43,8 +44,11 @@ public class NCBIBlastPDB {
 				if(!rid.isEmpty()){
 					long t0 = System.currentTimeMillis();
 					boolean blastFinished = false;
+					System.out.print("Waiting for blast results");
 					do{
 						pdbIds.clear();
+						System.out.print(".");
+						//System.out.println(Constants.NCBIBLASTURL+Constants.NCBIBLAST_RESPONSE_DEFPARAMS+rid);
 						URL uRes = new URL(Constants.NCBIBLASTURL+Constants.NCBIBLAST_RESPONSE_DEFPARAMS+rid);
 						in =  doPOST(uRes);
 						rd = new BufferedReader(new InputStreamReader(in));
@@ -57,11 +61,16 @@ public class NCBIBlastPDB {
 						}      
 						rd.close();
 						if(blastFinished){
+							//String pattern = "[0-9A-Z]{4}_[A-Z](.+)";
+							bestHit = "";
 							for (String string : pdbIds){
-								if(string.matches("pdb\\|\\w+\\|\\w+\\s+.+\\s+\\d+\\s+[\\de\\.-]+\\s*")){
-								String[] arrString = string.split("\\s+");
-								String[] arrPbdId = arrString[0].split("\\|");
-								bestHit = arrPbdId[1]+"|"+arrPbdId[2]+"|"+arrString[arrString.length-1]+"|"+arrString[arrString.length-2];
+								boolean bestHitFound = false;
+								
+								if(!bestHitFound && string.matches("[A-Z0-9]{4}_[A-Z]+(.+)(\\s+)([0-9]+)(\\s+)(([0-9]+.?[0-9]*)|([0-9].[0-9]+))([Ee][+-]?[0-9]+)?\\s*")){
+									String[] arrString = string.split("\\s+");
+									String[] arrPbdId = arrString[0].split("_");
+									bestHit = arrPbdId[0]+"|"+arrPbdId[1]+"|"+arrString[arrString.length-1]+"|"+arrString[arrString.length-2];
+									bestHitFound = true;
 								/*	            		  System.out.println("PDB Id:"+arrPbdId[1]);
 								System.out.println("PDB:Chain"+arrPbdId[2]);
 								System.out.println("e-value:"+arrString[arrString.length-1]);*/
@@ -77,6 +86,14 @@ public class NCBIBlastPDB {
 							}
 						}
 					}while(System.currentTimeMillis()-t0<Constants.NCBIBLAST_TIMEOUT && !blastFinished);
+					System.out.println(".");
+					if(blastFinished){
+						System.out.println("BLAST finished");						
+					}
+					else{
+						System.out.println("Timeout exceeded!");
+					}
+					
 				}
 			} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -90,11 +107,7 @@ public class NCBIBlastPDB {
 
 
 		return bestHit;
-
-
-
-
-		}
+	}
         	   
 		   /** do a POST to a URL and return the response stream for further processing elsewhere.
 		* 
@@ -105,7 +118,7 @@ public class NCBIBlastPDB {
 		*/
 		public static InputStream doPOST(URL url) throws IOException {
 			// Send data
-			URLConnection conn = (URLConnection) url.openConnection();
+			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setDoOutput(true);
 			// Get the response
 			return conn.getInputStream();

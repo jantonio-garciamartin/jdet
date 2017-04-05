@@ -60,7 +60,7 @@ public class ColorParser {
 		    ColorScheme.addGradualScheme(userColorMap,ColorScheme.USER_DEF);
 		    ColorScheme.setUserDefSchemeValues(userColorMap);
 		    ColorScheme.setColorScheme(ColorScheme.USER_DEF);
-
+		    reader.close();
 		} catch (FileNotFoundException e) {
 			uploadOK = false;
 			message = "Error: File "+colorfile+" not found.\n";

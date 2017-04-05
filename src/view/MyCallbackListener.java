@@ -26,7 +26,6 @@ public class MyCallbackListener implements JmolCallbackListener{
 		}
 	}
 
-	@Override
 	public void setCallbackFunction(String arg0, String arg1) {
 		
 	}
