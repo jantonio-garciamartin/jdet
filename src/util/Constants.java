@@ -14,8 +14,8 @@ public class Constants {
 
 	// General Application Constants
 	public static final String APPNAME = "JDet";
-	public static final String VERSIONDATE = "2017/04/04";
-	public static final String VERSION = "1.4.7";
+	public static final String VERSIONDATE = "2017/10/16";
+	public static final String VERSION = "1.4.8";
 	public static final String APPTITLE = APPNAME + " " + VERSION + " ("	+ VERSIONDATE + ")";	
 	public static final int DEFAULT_WIDTH = 1100;
 	public static final int DEFAULT_HEIGHT = 650;

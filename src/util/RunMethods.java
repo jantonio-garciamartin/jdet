@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -233,10 +234,12 @@ public class RunMethods  extends JDialog {
 			if(System.getProperty("os.name").toLowerCase().indexOf("nix") >=0 || System.getProperty("os.name").toLowerCase().indexOf("linux") >=0){
 				if(System.getProperty("os.arch").indexOf("amd64")>=0){
 					command += "xdet_linux64";
+					System.out.println("Executing 64 bits version");
 				}
 				else{
 					command += "xdet_linux32";
-				}
+					System.out.println("Executing 32 bits version");					
+				}	
 	 		}
 	 		else if(System.getProperty("os.name").toLowerCase().indexOf("win") >=0){
 	 			command += "xdet.exe";
@@ -371,7 +374,17 @@ public class RunMethods  extends JDialog {
 			
 			try {
 				String completeCommand = command+" -i .."+Constants.dS+tmpFileName+" -o .."+Constants.dS+outFileName+" "+params;
-				ProcessBuilder procB = new ProcessBuilder(System.getProperty("user.dir")+Constants.dS+Constants.METHODS_DIR+command,"-i","../"+tmpFileName,"-o","../"+outFileName,params);
+				Vector<String> procElems = new Vector<String>();
+				procElems.add(System.getProperty("user.dir")+Constants.dS+Constants.METHODS_DIR+command);
+				procElems.add("-i");
+				procElems.add("../"+tmpFileName);
+				procElems.add("-o");
+				procElems.add("../"+outFileName);
+				String[] paramsArr =params.split("\\s");
+				for(int i=0; i< paramsArr.length;i++){
+					procElems.add(paramsArr[i]);
+				}
+				ProcessBuilder procB = new ProcessBuilder(procElems);
 				procB.directory(new File(System.getProperty("user.dir")+Constants.dS+Constants.METHODS_DIR));
 
 				Process proc  = procB.start();
@@ -447,7 +460,7 @@ public class RunMethods  extends JDialog {
 						}
 						
 						
-						procB = new ProcessBuilder(System.getProperty("user.dir")+Constants.dS+Constants.METHODS_DIR+command,"-i","../"+tmpFileName,"-o","../"+outFileName,params);
+						procB = new ProcessBuilder(procElems);
 						procB.directory(new File(System.getProperty("user.dir")+Constants.dS+Constants.METHODS_DIR));
 						proc  = procB.start();
 						System.out.println(completeCommand);
