@@ -248,7 +248,7 @@ public class MethodPanel extends JPanel implements Observer{
 				if (pos2funcRes.containsKey(i)) {
 					
 					// Check if double-value is higher than the correlation threshold
-						if (pos2funcRes.get(i).getCorrelation().doubleValue() > xdetThreshold) {
+						if (pos2funcRes.get(i).getCorrelation().doubleValue() >= xdetThreshold) {
 							letter = firstSequence.charAt(i-1);
 							x = viewProps.getCharWidth() * (i - startx) - 10;
 							charOffset = (viewProps.getCharWidth() - fm
@@ -268,7 +268,7 @@ public class MethodPanel extends JPanel implements Observer{
 						}
 					
 						// Check if double-value is lower than the rank threshold
-						if (pos2funcRes.get(i).getEntropy().doubleValue() < entropyThreshold) {
+						if (pos2funcRes.get(i).getEntropy().doubleValue() <= entropyThreshold && pos2funcRes.get(i).getEntropy().doubleValue()>=0) {
 							letter = firstSequence.charAt(i-1);
 							x = viewProps.getCharWidth() * (i - startx) - 10;
 							charOffset = (viewProps.getCharWidth() - fm.charWidth(letter)) / 2;
@@ -291,7 +291,7 @@ public class MethodPanel extends JPanel implements Observer{
 			if (pos2predPos != null){				
 				if (pos2predPos.containsKey(i)) {					
 					// Check if double-value is lower than the rank threshold
-						if (pos2predPos.get(i).getAverageRank().doubleValue() < s3detThreshold) {
+						if (pos2predPos.get(i).getAverageRank().doubleValue() <= s3detThreshold) {
 							letter = firstSequence.charAt(i-1);
 						
 							x = viewProps.getCharWidth() * (i - startx) - 10;

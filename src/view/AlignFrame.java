@@ -1545,7 +1545,7 @@ public class AlignFrame extends JFrame {
     	double xdetThreshold = methods.getCurrentXDetCutoff(); 
     	for(int i=0;i<alObj.getWidth();i++){
     		if(methods.getxDetObject().getPos2ResMap().containsKey(i)){
-    			if(methods.getxDetObject().getPos2ResMap().get(i).getCorrelation().doubleValue() > xdetThreshold){
+    			if(methods.getxDetObject().getPos2ResMap().get(i).getCorrelation().doubleValue() >= xdetThreshold){
     				if(mode == Constants.SELECTION_AND){
     					if(currentSel.contains(i)){
     						SelectionManager.addToCurrentSelection(i);
@@ -1570,7 +1570,7 @@ public class AlignFrame extends JFrame {
     	double entropyThreshold = methods.getCurrentEntropyCutoff();
     	for(int i=0;i<alObj.getWidth();i++){
     		if(methods.getxDetObject().getPos2ResMap().containsKey(i)){
-    			if(methods.getxDetObject().getPos2ResMap().get(i).getEntropy().doubleValue() < entropyThreshold){
+    			if(methods.getxDetObject().getPos2ResMap().get(i).getEntropy().doubleValue() <= entropyThreshold && methods.getxDetObject().getPos2ResMap().get(i).getEntropy().doubleValue() >=0){
     				if(mode == Constants.SELECTION_AND){
     					if(currentSel.contains(i)){
     						SelectionManager.addToCurrentSelection(i);
@@ -1595,7 +1595,7 @@ public class AlignFrame extends JFrame {
     	double s3Threshold = methods.getCurrentS3DetCutoff(); 
     	for(int i=0;i<alObj.getWidth();i++){
     		if(methods.getS3DetObject().getPos2PredPosition().containsKey(i)){
-    			if(methods.getS3DetObject().getPos2PredPosition().get(i).getAverageRank().doubleValue() < s3Threshold){
+    			if(methods.getS3DetObject().getPos2PredPosition().get(i).getAverageRank().doubleValue() <= s3Threshold){
     				if(mode == Constants.SELECTION_AND){
     					if(currentSel.contains(i)){
     						SelectionManager.addToCurrentSelection(i);

@@ -1,7 +1,7 @@
  =====> JDet Website <=====
 
-   Here you can find all updated about the JDet project:
-   http://jdet.googlecode.com
+   Here you can find all updates about the JDet project:
+   http://csbg.cnb.csic.es/JDet/
 
    On the website you can also find more detailed information and documentation about JDet software.
 
